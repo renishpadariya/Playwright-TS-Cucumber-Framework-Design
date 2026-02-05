@@ -15,7 +15,7 @@ It is designed for **scalability**, **readability**, and **CI/CD readiness**, fo
 ---
 
 ## Project Structure
-![Playwright-BDD-TS-FramworkDesign](assets\Playwright-BDD-TS-FramworkDesign.png)
+![Playwright-BDD-TS-FramworkDesign](assets/Playwright-BDD-TS-FramworkDesign.png)
 
 
 
