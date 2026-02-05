@@ -1,0 +1,20 @@
+
+# Playwright
+/test-results/
+/playwright/.cache/
+/playwright/.auth/
+# Dependencies
+node_modules/
+
+# Test reports
+reports/
+
+# Environment variables
+.env
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
