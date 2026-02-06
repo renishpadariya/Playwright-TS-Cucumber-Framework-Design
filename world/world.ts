@@ -1,5 +1,5 @@
 import { setWorldConstructor, World } from '@cucumber/cucumber';
-import { Browser, BrowserContext, Page, chromium, firefox, webkit } from '@playwright/test';
+import {Browser,BrowserContext,Page,chromium,firefox,webkit} from '@playwright/test';
 import { ENV } from '../config/env';
 
 export class CustomWorld extends World {
@@ -14,13 +14,22 @@ export class CustomWorld extends World {
   async launchBrowser() {
     switch (ENV.browser.toLowerCase()) {
       case 'firefox':
-        this.browser = await firefox.launch({ headless: false });
+        this.browser = await firefox.launch({
+          headless: ENV.headless,
+        });
         break;
+
       case 'webkit':
-        this.browser = await webkit.launch({ headless: false });
+        this.browser = await webkit.launch({
+          headless: ENV.headless,
+        });
         break;
+
       default:
-        this.browser = await chromium.launch({ headless: false });
+        this.browser = await chromium.launch({
+          headless: ENV.headless,
+        });
+        break;
     }
 
     this.context = await this.browser.newContext();
@@ -28,7 +37,9 @@ export class CustomWorld extends World {
   }
 
   async closeBrowser() {
-    await this.browser.close();
+    if (this.browser) {
+      await this.browser.close();
+    }
   }
 }
 

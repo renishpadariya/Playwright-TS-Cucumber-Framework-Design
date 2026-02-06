@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cucumber-js",
+  "test:headed": "HEADLESS=false cucumber-js",
+  "report:advanced": "node utils/generate-advanced-report.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
