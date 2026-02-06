@@ -6,14 +6,16 @@ Before(async function (this: CustomWorld, scenario) {
 
     });
 
-After(async function (this: CustomWorld, scenario) {
-  if (scenario.result?.status === 'FAILED') {
-    const screenshot = await this.page.screenshot({ fullPage: true });
+After(async function (scenario) {
+  if (scenario.result?.status === 'FAILED' && this.page) {
+    const screenshot = await this.page.screenshot();
     await this.attach(screenshot, 'image/png');
   }
-  await this.closeBrowser();
-});
 
+  if (this.browser) {
+    await this.browser.close();
+  }
+});
 
 
 
