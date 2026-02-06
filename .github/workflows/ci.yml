@@ -33,3 +33,9 @@ jobs:
           SAUCE_PASSWORD: secret_sauce
           BROWSER: chromium
           HEADLESS: true
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-html-report
+          path: reports/html-report
