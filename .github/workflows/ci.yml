@@ -39,3 +39,9 @@ jobs:
         with:
           name: cucumber-html-report
           path: reports/html-report
+
+      - name: Deploy HTML report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: reports/html-report
