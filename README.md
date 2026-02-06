@@ -1,22 +1,22 @@
 # Playwright + TypeScript + Cucumber (BDD) Automation Framework
 
-This repository contains a **BDD-style test automation framework** built using **Playwright**, **TypeScript**, and **Cucumber**.  
-It is designed for **scalability**, **readability**, and **CI/CD readiness**, following real-world automation best practices.
+A BDD-style test automation framework built using **Playwright**, **TypeScript**, and **Cucumber**.  
+Designed with real-world best practices for **scalability, maintainability, and CI/CD readiness**.
 ---
 
 ## Tech Stack
 
-- **Playwright** – Browser automation
+- **Playwright** – Cross-browser automation
 - **Cucumber (BDD)** – Gherkin feature files
-- **TypeScript** – Strong typing & maintainability
+- **TypeScript** – Type safety & maintainability
 - **Node.js / npm**
-- **Cucumber HTML Reporter** – Execution reports with screenshots
-
+- **Cucumber HTML Reporter** – Rich HTML reports with screenshots
+- **GitHub Actions** – CI/CD
+- **GitHub Pages** – Hosted test reports
 ---
 
 ## Project Structure
 ![Playwright-BDD-TS-FramworkDesign](assets/Playwright-BDD-TS-FramworkDesign.png)
-
 
 
 ## Environment Configuration (.env)
@@ -27,15 +27,17 @@ This project uses a '.env' file to manage sensitive and environment-specific dat
 
 BASE_URL=https://example.com
 
-USERNAME=standard_user
+SAUCE_USERNAME=standard_user
 
-PASSWORD=secret_sauce
+SAUCE_PASSWORD=secret_sauce
 
 BROWSER=chromium | Firefox | Webkit (you can write any one value as per your choice)
 
+HEADLESS=false
+
 **Important**
 - '.env' is added to '.gitignore'
-- Do **NOT** commit '.env' to GitHub
+
 - Each user / CI environment should provide its own '.env'
 
 ---
@@ -57,12 +59,15 @@ npx playwright install
 
 ###  Execute Tests
 Run all Cucumber scenarios:
-npx cucumber-js
+npm test
+
+Run tests in headed mode:
+npm run test:headed
 
 ---
 
 ### Test Reports
-## Standard HTML Report
+## Standard HTML Report (CI & Local)
 After execution, the HTML report is generated at:
 reports/html-report/index.html
 
@@ -78,17 +83,17 @@ Screenshots for failed scenarios
 ## Advanced HTML Report
 After running the tests, execute the following Node command:
 
-node ./utils/generate-advanced-report.js
+npm run report:advanced
 
 This command:
 
 Reads the Cucumber JSON output
 
-Generates a detailed HTML report with charts and visuals
+Generates a rich visual HTML report
 
 Generated at:
 
-reports/html-report/advanced-report.html
+reports/html-report/index.html
 
 # Advanced report features:
 
@@ -100,28 +105,48 @@ Failure screenshots
 
 Clear visual representation for analysis and reporting
 
-## How to open report:
+## Live Report (GitHub Pages)
 
-Double-click the file
+Latest execution report is automatically published via GitHub Actions:
 
-OR
-
-Right-click → Open with browser
+https://renishpadariya.github.io/Playwright-TS-Cucumber-Framework-Design/
 
 ---
 ### Screenshots on Failure
-Screenshots are automatically captured only for failed scenarios using Cucumber After hooks and Playwright’s screenshot API.
+Screenshots are automatically captured only for failed scenarios using:
+
+Cucumber After hooks
+
+Playwright page.screenshot()
+
+They are visible in:
+
+HTML report
+
+CI artifacts
 
 ---
 ### Framework Design Highlights
 
-BDD with Gherkin for business-readable tests
+BDD with Gherkin (business-readable tests)
 
-CustomWorld for scenario-level isolation
+Custom World for scenario-level isolation
 
 One browser instance per scenario
 
-Page Object Model (POM) for maintainability
+Page Object Model (POM)
 
 Environment-based execution
+
+CI-ready with hosted reports
+
+---
+
+### CI/CD
+
+GitHub Actions runs tests on every push & pull request
+
+HTML reports are uploaded as artifacts
+
+Reports are deployed automatically to GitHub Pages
 
