@@ -51,3 +51,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: reports/html-report
+
+      - name: Publish Report Link in Summary
+        run: |
+          echo "## Test Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [View HTML Report](https://renishpadariya.github.io/Playwright-TS-Cucumber-Framework-Design/)" >> $GITHUB_STEP_SUMMARY
