@@ -1,3 +1,5 @@
+![CI](https://github.com/renishpadariya/Playwright-TS-Cucumber-Framework-Design/actions/workflows/ci.yml/badge.svg)
+
 # Playwright + TypeScript + Cucumber (BDD) Automation Framework
 
 A BDD-style test automation framework built using **Playwright**, **TypeScript**, and **Cucumber**.  
@@ -105,10 +107,11 @@ Failure screenshots
 
 Clear visual representation for analysis and reporting
 
-## Live Report (GitHub Pages)
+## Live Test Report (CI)
 
-Latest execution report is automatically published via GitHub Actions:
+The latest execution report is automatically published via **GitHub Actions** and hosted using **GitHub Pages**.
 
+**View Latest HTML Report:**  
 https://renishpadariya.github.io/Playwright-TS-Cucumber-Framework-Design/
 
 ---
